@@ -62,7 +62,7 @@ export default function FoxKMRouter() {
           />
         </div>
 
-        <h1 className="text-2xl font-bold mb-2">Fox KM Mobilidade</h1>
+        <h1 className="text-2xl font-bold mb-2">FOX KM • Mobilidade Urbana</h1>
         <p className="text-zinc-400 mb-8 text-sm leading-relaxed">
           Seu carro em poucos cliques. Motoristas locais e rápidos. Escolha sua plataforma para baixar o aplicativo.
         </p>
