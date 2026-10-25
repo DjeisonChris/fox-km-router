@@ -9,7 +9,7 @@ export default function FoxKMRouter() {
 
   // Links Oficiais
   const linkAndroid = "https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine";
-  const linkIOS = "#"; // Substitua esta hashtag pelo link da Apple quando o cliente enviar
+  const linkIOS = "[https://apps.apple.com/br/app/fox-km-passageiro/id6755605140](https://apps.apple.com/br/app/fox-km-passageiro/id6755605140)";
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor;
