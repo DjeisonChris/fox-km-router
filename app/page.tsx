@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Smartphone, Monitor, Car } from 'lucide-react';
+import { Smartphone, Monitor } from 'lucide-react';
 
 export default function FoxKMRouter() {
   const [os, setOs] = useState<string | null>(null);
   const [redirecting, setRedirecting] = useState(true);
 
-  // Links Oficiais
+  // Links Oficiais Definitivos
   const linkAndroid = "https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine";
-  const linkIOS = "[https://apps.apple.com/br/app/fox-km-passageiro/id6755605140](https://apps.apple.com/br/app/fox-km-passageiro/id6755605140)";
+  const linkIOS = "https://apps.apple.com/br/app/fox-km-passageiro/id6755605140";
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor;
@@ -17,12 +17,7 @@ export default function FoxKMRouter() {
     // Detecção iOS
     if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
       setOs('iOS');
-      // Só redireciona automaticamente se o link da Apple já estiver configurado
-      if (linkIOS !== "#") {
-        window.location.href = linkIOS;
-      } else {
-        setRedirecting(false);
-      }
+      window.location.href = linkIOS;
       return;
     }
     
@@ -51,7 +46,6 @@ export default function FoxKMRouter() {
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center justify-center p-6 font-sans selection:bg-sky-500/30">
       <div className="max-w-md w-full bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
         
-        {/* Efeito visual de fundo */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-sky-500/20 blur-[60px] rounded-full -z-10" />
 
         <div className="w-32 h-32 mx-auto bg-zinc-950 rounded-2xl flex items-center justify-center mb-8 border border-zinc-800 shadow-inner overflow-hidden relative">
@@ -62,9 +56,9 @@ export default function FoxKMRouter() {
           />
         </div>
 
-        <h1 className="text-2xl font-bold mb-2">FOX KM • Mobilidade Urbana</h1>
+        <h1 className="text-2xl font-bold mb-2">Fox KM Mobilidade</h1>
         <p className="text-zinc-400 mb-8 text-sm leading-relaxed">
-          Seu carro em poucos cliques. Motoristas locais e rápidos. Escolha sua plataforma para baixar o aplicativo.
+          O seu carro em poucos cliques. Motoristas locais e rápidos. Escolha a sua plataforma para baixar a aplicação.
         </p>
 
         <div className="flex flex-col gap-4">
@@ -79,19 +73,13 @@ export default function FoxKMRouter() {
           </a>
 
           <a 
-            href={linkIOS === "#" ? "javascript:void(0)" : linkIOS}
+            href={linkIOS}
             target="_blank"
             rel="noopener noreferrer"
-            className={`w-full py-4 rounded-xl flex items-center justify-center gap-3 transition-colors border group ${
-              linkIOS === "#" 
-                ? "bg-zinc-900 border-zinc-800 text-zinc-500 cursor-not-allowed" 
-                : "bg-zinc-800 hover:bg-zinc-700 text-white border-zinc-700 hover:border-sky-500/50"
-            }`}
+            className="w-full bg-zinc-800 hover:bg-zinc-700 text-white py-4 rounded-xl flex items-center justify-center gap-3 transition-colors border border-zinc-700 hover:border-sky-500/50 group"
           >
-            <Smartphone size={20} className={linkIOS === "#" ? "text-zinc-600" : "text-sky-500 group-hover:scale-110 transition-transform"} />
-            <span className="font-bold">
-              {linkIOS === "#" ? "Em breve na App Store" : "Baixar na App Store"}
-            </span>
+            <Smartphone size={20} className="text-sky-500 group-hover:scale-110 transition-transform" />
+            <span className="font-bold">Baixar na App Store</span>
           </a>
         </div>
 
@@ -102,7 +90,7 @@ export default function FoxKMRouter() {
               <span>Acesso Desktop</span>
             </div>
             <p className="normal-case text-zinc-600 mt-2">
-              Acesse este link pelo celular para instalação.
+              Aceda a este link pelo telemóvel para instalação.
             </p>
           </div>
         )}
