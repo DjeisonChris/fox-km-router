@@ -7,28 +7,30 @@ export default function FoxKMRouter() {
   const [os, setOs] = useState<string | null>(null);
   const [redirecting, setRedirecting] = useState(true);
 
-  // Links Oficiais Definitivos
   const linkAndroid = "https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine";
   const linkIOS = "https://apps.apple.com/br/app/fox-km-passageiro/id6755605140";
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor;
     
-    // Detecção iOS
+    // Detecção iOS com delay de 800ms para o Analytics
     if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
       setOs('iOS');
-      window.location.href = linkIOS;
+      setTimeout(() => {
+        window.location.href = linkIOS;
+      }, 800);
       return;
     }
     
-    // Detecção Android
+    // Detecção Android com delay de 800ms para o Analytics
     if (/android/i.test(userAgent)) {
       setOs('Android');
-      window.location.href = linkAndroid;
+      setTimeout(() => {
+        window.location.href = linkAndroid;
+      }, 800);
       return;
     }
 
-    // Acesso via PC ou falha de leitura
     setOs('Desktop');
     setRedirecting(false);
   }, []);
