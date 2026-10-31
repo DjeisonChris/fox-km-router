@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
-import { Smartphone, MessageCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { Smartphone, MessageCircle, ArrowRight, ShieldCheck, Monitor } from 'lucide-react';
 
 export default function FoxKMRouter() {
-  
+  const [isDesktop, setIsDesktop] = useState(false);
+
   // O Cérebro do Roteador: Deteção de Sistema Operativo no Clique
   const handleAppClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -16,8 +17,14 @@ export default function FoxKMRouter() {
       return;
     }
 
-    // Detecção Android (ou Desktop) - Direciona para Google Play
-    window.location.href = "https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine";
+    // Detecção Android - Direciona para Google Play
+    if (/android/i.test(userAgent)) {
+      window.location.href = "https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine";
+      return;
+    }
+
+    // Se for PC/Desktop ou falhar a leitura, abre a escolha manual
+    setIsDesktop(true);
   };
 
   return (
@@ -44,25 +51,51 @@ export default function FoxKMRouter() {
         {/* Os Dois Portões de Entrada */}
         <div className="space-y-4">
           
-          {/* Opção 1: O Aplicativo (Com Roteador Inteligente Nativo) */}
-          <button 
-            onClick={handleAppClick}
-            className="w-full text-left group relative flex items-center gap-4 p-5 bg-zinc-900/80 border border-zinc-700/50 rounded-2xl hover:border-amber-500/70 hover:bg-zinc-900 transition-all active:scale-[0.98] shadow-xl overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-              <Smartphone className="text-amber-500" size={28} />
+          {/* Opção 1: O Aplicativo (Com Expansão para PC) */}
+          {!isDesktop ? (
+            <button 
+              onClick={handleAppClick}
+              className="w-full text-left group relative flex items-center gap-4 p-5 bg-zinc-900/80 border border-zinc-700/50 rounded-2xl hover:border-amber-500/70 hover:bg-zinc-900 transition-all active:scale-[0.98] shadow-xl overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Smartphone className="text-amber-500" size={28} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-lg font-bold text-zinc-100 group-hover:text-amber-400 transition-colors">
+                  Aplicativo Fox KM
+                </h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Rastreio no mapa em tempo real.
+                </p>
+              </div>
+              <ArrowRight className="text-zinc-500 group-hover:text-amber-500 transition-colors" size={20} />
+            </button>
+          ) : (
+            <div className="w-full bg-zinc-900/80 border border-amber-500/30 rounded-2xl p-4 shadow-xl animate-in fade-in zoom-in duration-300">
+              <div className="flex items-center justify-center gap-2 text-zinc-400 text-sm mb-4">
+                <Monitor size={16} /> Acesso via Computador
+              </div>
+              <div className="flex flex-col gap-3">
+                <a 
+                  href="https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine" 
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-emerald-500/50 transition-colors"
+                >
+                  <Smartphone size={20} className="text-emerald-500" />
+                  <span className="font-bold text-sm text-zinc-200">Baixar para Android</span>
+                </a>
+                <a 
+                  href="https://apps.apple.com/br/app/fox-km-passageiro/id6755605140" 
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-sky-500/50 transition-colors"
+                >
+                  <Smartphone size={20} className="text-sky-500" />
+                  <span className="font-bold text-sm text-zinc-200">Baixar para iPhone (iOS)</span>
+                </a>
+              </div>
             </div>
-            <div className="flex-1">
-              <h2 className="text-lg font-bold text-zinc-100 group-hover:text-amber-400 transition-colors">
-                Aplicativo Fox KM
-              </h2>
-              <p className="text-xs text-zinc-400 mt-0.5">
-                Rastreio no mapa em tempo real.
-              </p>
-            </div>
-            <ArrowRight className="text-zinc-500 group-hover:text-amber-500 transition-colors" size={20} />
-          </button>
+          )}
 
           {/* Opção 2: A IA do WhatsApp */}
           <a 
