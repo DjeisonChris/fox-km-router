@@ -55,7 +55,7 @@ export default function FoxKMRouter() {
             </div>
             <div className="flex-1">
               <h2 className="text-lg font-bold text-zinc-100 group-hover:text-amber-400 transition-colors">
-                Aplicação Fox KM
+                Aplicativo Fox KM
               </h2>
               <p className="text-xs text-zinc-400 mt-0.5">
                 Rastreio no mapa em tempo real.

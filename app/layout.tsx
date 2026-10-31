@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Fox KM | Chame o seu carro',
-  description: 'Como prefere chamar o seu carro? Escolha entre a nossa aplicação oficial ou o WhatsApp Inteligente com IA. Motoristas locais e rápidos.',
+  description: 'Como prefere chamar o seu carro? Escolha entre a nosso aplicativo oficial ou o WhatsApp Inteligente com IA. Motoristas locais e rápidos.',
   themeColor: '#09090b', // Cor correspondente ao bg-zinc-950 para colorir a barra do navegador no telemóvel
 }
 
