@@ -80,17 +80,21 @@ export default function FoxKMRouter() {
                 <a 
                   href="https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine" 
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-emerald-500/50 transition-colors"
+                  className="flex items-center gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-emerald-500/50 transition-colors group"
                 >
-                  <Smartphone size={20} className="text-emerald-500" />
+                  <svg className="w-5 h-5 fill-emerald-500 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                    <path d="M17.523 9.708l1.89-3.272c.117-.202.049-.465-.153-.583-.203-.117-.466-.048-.584.154l-1.922 3.328C15.228 8.57 13.67 8.1 12 8.1s-3.228.47-4.754 1.235L5.324 6.007c-.118-.202-.381-.271-.584-.154-.202.118-.27.381-.153.583l1.89 3.272C3.844 11.236 2 14.152 2 17.5h20c0-3.348-1.844-6.264-4.477-7.792zM8.5 14.5c-.552 0-1-.448-1-1s.448-1 1-1 1 .448 1 1-.448 1-1 1zm7 0c-.552 0-1-.448-1-1s.448-1 1-1 1 .448 1 1-.448 1-1 1z"/>
+                  </svg>
                   <span className="font-bold text-sm text-zinc-200">Baixar para Android</span>
                 </a>
                 <a 
                   href="https://apps.apple.com/br/app/fox-km-passageiro/id6755605140" 
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-sky-500/50 transition-colors"
+                  className="flex items-center gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-sky-500/50 transition-colors group"
                 >
-                  <Smartphone size={20} className="text-sky-500" />
+                  <svg className="w-5 h-5 fill-sky-500 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                    <path d="M16.48 9.92c-.03-2.6 2.1-3.83 2.19-3.88-1.2-1.74-3.07-1.98-3.72-2.02-1.57-.16-3.08.92-3.88.92-.8 0-2.03-.92-3.32-.89-1.7.03-3.26.98-4.14 2.5-1.77 3.07-.45 7.6 1.28 10.08.85 1.22 1.86 2.58 3.2 2.53 1.28-.05 1.8-.82 3.35-.82 1.54 0 2.02.82 3.35.8 1.4-.03 2.27-1.25 3.12-2.48.98-1.42 1.38-2.8 1.4-2.87-.03-.02-2.67-1.02-2.7-4.08h-.03zM14.28 4.31c.7-.85 1.18-2.04 1.05-3.21-1.02.04-2.27.68-2.98 1.53-.64.75-1.2 1.95-1.05 3.1 1.13.1 2.28-.57 2.98-1.42z"/>
+                  </svg>
                   <span className="font-bold text-sm text-zinc-200">Baixar para iPhone (iOS)</span>
                 </a>
               </div>
