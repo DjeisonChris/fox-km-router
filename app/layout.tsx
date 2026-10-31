@@ -1,34 +1,22 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import Script from 'next/script';
-
-const inter = Inter({ subsets: ['latin'] });
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Fox KM Mobilidade',
-  description: 'O seu carro em poucos cliques.',
-};
+  title: 'Fox KM | Chame o seu carro',
+  description: 'Como prefere chamar o seu carro? Escolha entre a nossa aplicação oficial ou o WhatsApp Inteligente com IA. Motoristas locais e rápidos.',
+  themeColor: '#09090b', // Cor correspondente ao bg-zinc-950 para colorir a barra do navegador no telemóvel
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="pt-BR">
-      <head>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-96HD9FVBXZ" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-96HD9FVBXZ');
-          `}
-        </Script>
-      </head>
-      <body className={inter.className}>{children}</body>
+      <body className="bg-zinc-950 text-zinc-50 font-sans antialiased overflow-x-hidden">
+        {children}
+      </body>
     </html>
-  );
+  )
 }

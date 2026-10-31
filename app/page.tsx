@@ -4,6 +4,22 @@ import React from 'react';
 import { Smartphone, MessageCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function FoxKMRouter() {
+  
+  // O Cérebro do Roteador: Deteção de Sistema Operativo no Clique
+  const handleAppClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+
+    // Detecção iOS - Direciona para App Store
+    if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
+      window.location.href = "https://apps.apple.com/br/app/fox-km-passageiro/id6755605140"; 
+      return;
+    }
+
+    // Detecção Android (ou Desktop) - Direciona para Google Play
+    window.location.href = "https://play.google.com/store/apps/details?id=br.com.foxkm.passenger.drivermachine";
+  };
+
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50 flex flex-col items-center justify-center p-6 font-sans selection:bg-amber-500/30 overflow-hidden relative">
       
@@ -28,10 +44,10 @@ export default function FoxKMRouter() {
         {/* Os Dois Portões de Entrada */}
         <div className="space-y-4">
           
-          {/* Opção 1: O Aplicativo (Destino Primário) */}
-          <a 
-            href="https://seulink.com/app" // SUBSTITUA PELO LINK DO SEU APP NA LOJA
-            className="group relative flex items-center gap-4 p-5 bg-zinc-900/80 border border-zinc-700/50 rounded-2xl hover:border-amber-500/70 hover:bg-zinc-900 transition-all active:scale-[0.98] shadow-xl overflow-hidden"
+          {/* Opção 1: O Aplicativo (Com Roteador Inteligente Nativo) */}
+          <button 
+            onClick={handleAppClick}
+            className="w-full text-left group relative flex items-center gap-4 p-5 bg-zinc-900/80 border border-zinc-700/50 rounded-2xl hover:border-amber-500/70 hover:bg-zinc-900 transition-all active:scale-[0.98] shadow-xl overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -46,9 +62,9 @@ export default function FoxKMRouter() {
               </p>
             </div>
             <ArrowRight className="text-zinc-500 group-hover:text-amber-500 transition-colors" size={20} />
-          </a>
+          </button>
 
-          {/* Opção 2: A IA do WhatsApp (Destino Secundário) */}
+          {/* Opção 2: A IA do WhatsApp */}
           <a 
             href="https://wa.me/5547988369785?text=Olá, preciso de um carro agora." 
             target="_blank"
